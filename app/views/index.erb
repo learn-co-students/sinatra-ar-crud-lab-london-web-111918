@@ -1,0 +1,9 @@
+<h1>All Articles</h1>
+<% @articles.each do |article| %>
+  <p> Title: <%= article.title %></p>
+  <p> Article: <%= article.content %></p>
+  <form action="/articles/<%= article.id.to_i %>" method="post">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete">
+  </form>
+  <% end %>
