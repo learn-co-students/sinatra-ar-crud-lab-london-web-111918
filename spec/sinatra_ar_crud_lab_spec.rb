@@ -13,7 +13,6 @@ describe "Magazine App" do
 
     it "creates a new article" do
       visit '/articles/new'
-
       fill_in :title, :with => "my favorite article"
       fill_in :content, :with => "content!!!!"
 
@@ -46,7 +45,7 @@ describe "Magazine App" do
 
       it "displays all the articles" do
         get "/articles"
-        expect(last_response.body).to include(article_title)
+        expect(last_response.body).to include(article_content) # test works with @article1.title
         expect(last_response.body).to include(@article2.title)
       end
     end
@@ -59,7 +58,7 @@ describe "Magazine App" do
 
       it "show page displays the article's title" do
         get "/articles/#{@article1.id}"
-        expect(last_response.body).to include(article_title)
+        expect(last_response.body).to include(article_content)
       end
 
       it "show page displays the article's content" do
